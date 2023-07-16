@@ -14,12 +14,12 @@ type Position struct {
 func NewPosition(file int8, rank int8) (_ *Position, err error) {
 	defer iterrors.Wrap(&err, "model.NewPosition(%d, %d)", file, rank)
 
-	if IsValidValue(file) {
+	if isValidPosition(file) {
 		return nil, fmt.Errorf("The file must be between 0 and 8. ")
 	}
 
-	if IsValidValue(rank) {
-		return nil, fmt.Errorf("The file must be between 0 and 8. ")
+	if isValidPosition(rank) {
+		return nil, fmt.Errorf("The rank must be between 0 and 8. ")
 	}
 
 	return &Position{
@@ -28,6 +28,6 @@ func NewPosition(file int8, rank int8) (_ *Position, err error) {
 	}, nil
 }
 
-func IsValidValue(value int8) bool {
+func isValidPosition(value int8) bool {
 	return (value < 0 || 8 < value)
 }

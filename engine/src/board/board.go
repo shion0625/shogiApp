@@ -4,14 +4,6 @@ type Board struct {
 	All [9][9]Piece
 }
 
-type Turn int
-
-const (
-	SENTE Turn = iota
-	GOTE
-	TEBAN_NUM
-)
-
 func NewBoard() *Board {
 	// piece := NewPiece()
 	board := &Board{
