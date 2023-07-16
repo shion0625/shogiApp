@@ -26,8 +26,8 @@ const (
 	King                // 王将
 )
 
-func newPieces() *Pieces {
-	return &Pieces{
+func NewPieces() Pieces {
+	return Pieces{
 		Empty:  Empty,
 		Pawn:   Pawn,
 		Lance:  Lance,
