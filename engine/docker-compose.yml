@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  server:  #サービス名
+    build:
+      context: ./docker/go  #ビルドに使用するDockerfileの場所
+      dockerfile: Dockerfile
+    container_name: gqlgen-todos  #コンテナの名前
+    tty: true  #コンテナの永続化
+    ports:
+      - '8080:8080'
+    volumes:  #マウントディレクトリ
+      - .:/app
+      - go-data:/go
+
+volumes:
+  go-data:
