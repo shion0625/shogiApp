@@ -42,8 +42,7 @@ func GetPieceTypeFromChar(char rune) (*model.Piece, error) {
 	case 'P':
 		return model.NewPiece(model.Pawn, model.Black)
 	default:
-		empty, _ := model.NewPiece(model.Empty, model.NoOwner)
-		return empty, fmt.Errorf("Invalid SFEN piece character: %s", string(char))
+		return nil, fmt.Errorf("Invalid SFEN piece character: %s", string(char))
 	}
 }
 

@@ -1,10 +1,12 @@
 package peace
 
 import (
+	"fmt"
+	"testing"
+
 	"github.com/shion0625/shogiApp/engine/src/domain/model"
 	"github.com/shion0625/shogiApp/engine/src/piece"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 func TestGetPieceTypeFromChar(t *testing.T) {
@@ -79,6 +81,7 @@ func TestGetPieceTypeFromChar(t *testing.T) {
 			p, _ := model.NewPiece(model.Pawn, model.Black)
 			return p
 		}(), nil},
+		{"[異常系] Insert a value that has not been set.", 'Z', nil, fmt.Errorf("Invalid SFEN piece character: %s", string('Z'))},
 	}
 
 	for _, testCase := range testCases {
