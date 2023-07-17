@@ -9,7 +9,6 @@ import (
 )
 
 func TestGetPieceTypeFromChar(t *testing.T) {
-
 	testCases := []struct {
 		text     string
 		char     rune
@@ -88,5 +87,51 @@ func TestGetPieceTypeFromChar(t *testing.T) {
 		assert.Equal(t, testCase.expected, piece)
 		assert.Equal(t, testCase.err, err)
 		t.Log(testCase.text) // テストケースのテキストをログに表示する
+	}
+}
+
+func TestPieceTypeToJapanese(t *testing.T) {
+	testCases := []struct {
+		piece    model.Piece
+		expected string
+	}{
+		{model.Piece{Name: model.Empty}, "空"},
+		{model.Piece{Name: model.Pawn}, "歩"},
+		{model.Piece{Name: model.Lance}, "香"},
+		{model.Piece{Name: model.Knight}, "桂"},
+		{model.Piece{Name: model.Bishop}, "角"},
+		{model.Piece{Name: model.Rook}, "飛"},
+		{model.Piece{Name: model.Gold}, "金"},
+		{model.Piece{Name: model.Silver}, "銀"},
+		{model.Piece{Name: model.King}, "王"},
+		{model.Piece{Name: 15}, "不"},
+	}
+
+	for _, testCase := range testCases {
+		result := PieceTypeToJapanese(testCase.piece)
+		assert.Equal(t, testCase.expected, result)
+	}
+}
+
+func TestPieceTypeToEnglish(t *testing.T) {
+	testCases := []struct {
+		piece    model.Piece
+		expected string
+	}{
+		{model.Piece{Name: model.Empty}, "Empty"},
+		{model.Piece{Name: model.Pawn}, "Pawn"},
+		{model.Piece{Name: model.Lance}, "Lance"},
+		{model.Piece{Name: model.Knight}, "Knight"},
+		{model.Piece{Name: model.Bishop}, "Bishop"},
+		{model.Piece{Name: model.Rook}, "Rook"},
+		{model.Piece{Name: model.Gold}, "Gold"},
+		{model.Piece{Name: model.Silver}, "Silver"},
+		{model.Piece{Name: model.King}, "King"},
+		{model.Piece{Name: 20}, "Unknown"},
+	}
+
+	for _, testCase := range testCases {
+		result := PieceTypeToEnglish(testCase.piece)
+		assert.Equal(t, testCase.expected, result)
 	}
 }
