@@ -1,11 +1,10 @@
-package peace
+package piece
 
 import (
 	"fmt"
 	"testing"
 
 	"github.com/shion0625/shogiApp/engine/src/domain/model"
-	"github.com/shion0625/shogiApp/engine/src/piece"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -85,7 +84,7 @@ func TestGetPieceTypeFromChar(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		piece, err := piece.GetPieceTypeFromChar(testCase.char)
+		piece, err := GetPieceTypeFromChar(testCase.char)
 		assert.Equal(t, testCase.expected, piece)
 		assert.Equal(t, testCase.err, err)
 		t.Log(testCase.text) // テストケースのテキストをログに表示する

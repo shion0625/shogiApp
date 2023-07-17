@@ -3,7 +3,7 @@ package model
 import (
 	"fmt"
 
-	"github.com/shion0625/shogiApp/engine/src/utils"
+	"github.com/shion0625/shogiApp/engine/src/utils/iterrors"
 )
 
 type Owner int8
