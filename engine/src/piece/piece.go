@@ -6,7 +6,14 @@ import (
 	"github.com/shion0625/shogiApp/engine/src/domain/model"
 )
 
-// 文字から駒の種類を取得するヘルパー関数
+// GetPieceTypeFromChar は与えられた文字から駒の種類を取得します。
+// 文字に対応する駒が存在しない場合はエラーを返します。
+// 引数:
+//   - char: チェックする文字
+//
+// 返り値:
+//   - *model.Piece: 駒の種類へのポインタ
+//   - error: エラー情報（無効な文字の場合はエラーメッセージ）
 func GetPieceTypeFromChar(char rune) (*model.Piece, error) {
 	switch char {
 	case 'r':
@@ -46,6 +53,12 @@ func GetPieceTypeFromChar(char rune) (*model.Piece, error) {
 	}
 }
 
+// PieceTypeToJapanese は与えられた駒の種類を日本語表記に変換します。
+// 引数:
+//   - piece: チェックする駒の種類
+//
+// 返り値:
+//   - string: 駒の種類の日本語表記
 func PieceTypeToJapanese(piece model.Piece) string {
 	switch piece.Name {
 	case model.Empty:
@@ -71,6 +84,12 @@ func PieceTypeToJapanese(piece model.Piece) string {
 	}
 }
 
+// PieceTypeToEnglish は与えられた駒の種類を英語表記に変換します。
+// 引数:
+//   - piece: チェックする駒の種類
+//
+// 返り値:
+//   - string: 駒の種類の英語表記
 func PieceTypeToEnglish(piece model.Piece) string {
 	switch piece.Name {
 	case model.Empty:
