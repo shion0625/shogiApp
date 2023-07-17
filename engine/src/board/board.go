@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/shion0625/shogiApp/engine/src/domain/model"
+	"github.com/shion0625/shogiApp/engine/src/piece"
 )
 
 type Bitboard uint64
@@ -56,7 +57,7 @@ func SetStartingPositionFromSFEN(sfen string) (*Board, error) {
 				fileIdx += numSpaces
 				continue
 			}
-			piece, err := model.GetPieceTypeFromChar(char)
+			piece, err := piece.GetPieceTypeFromChar(char)
 			if err != nil {
 				return nil, err
 			}
