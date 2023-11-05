@@ -1,5 +1,5 @@
 # goバージョン
-FROM golang:1.20-alpine
+FROM golang:1.21-alpine
 
 # アップデートとgit、alpine-sdkのインストール
 RUN apk update && apk add git && apk add alpine-sdk
